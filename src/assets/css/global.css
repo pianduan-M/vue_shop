@@ -18,3 +18,7 @@ body,
 .el-table-column {
   padding: 0;
 }
+
+.el-pagination {
+  margin-top: 20px;
+}
