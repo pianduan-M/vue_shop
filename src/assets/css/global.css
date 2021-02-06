@@ -5,3 +5,9 @@ body,
   padding: 0;
   height: 100%;
 }
+.el-card {
+  margin-top: 20px;
+}
+.el-dialog__footer {
+  transform: translateY(-20px);
+}
