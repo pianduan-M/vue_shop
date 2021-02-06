@@ -11,3 +11,7 @@ body,
 .el-dialog__footer {
   transform: translateY(-20px);
 }
+
+.el-tag {
+  margin: 10px;
+}
