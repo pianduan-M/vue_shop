@@ -31,7 +31,10 @@ import {
   Alert,
   Cascader,
   Tabs,
-  TabPane
+  TabPane,
+  Tooltip,
+  Timeline,
+  TimelineItem
 } from 'element-ui'
 
 Vue.use(Button)
@@ -64,6 +67,9 @@ Vue.use(Alert)
 Vue.use(Cascader)
 Vue.use(Tabs)
 Vue.use(TabPane)
+Vue.use(Tooltip)
+Vue.use(Timeline)
+Vue.use(TimelineItem)
 
 Vue.prototype.$message = Message
 Vue.prototype.$confirm = MessageBox.confirm
