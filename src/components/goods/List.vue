@@ -25,7 +25,9 @@
         </el-col>
         <!-- 添加商品按钮 -->
         <el-col :span="5">
-          <el-button type="primary" class="margin_left">添加商品</el-button>
+          <el-button type="primary" class="margin_left" @click="addGoods"
+            >添加商品</el-button
+          >
         </el-col>
       </el-row>
 
@@ -144,6 +146,10 @@ export default {
       }
       this.$message.success('已删除商品！')
       this.getGoodsList()
+    },
+    // 跳转添加商品页面
+    addGoods() {
+      this.$router.push('/add')
     }
   }
 }

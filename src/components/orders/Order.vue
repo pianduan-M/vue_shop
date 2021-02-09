@@ -223,6 +223,7 @@ export default {
       this.progressDate = res.data
       this.proDialogVisible = true
     }
+   
   }
 }
 </script>

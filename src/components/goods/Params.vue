@@ -496,4 +496,7 @@ export default {
 .el-table {
   margin-top: 20px;
 }
+.el-tag {
+  margin-right: 6px;
+}
 </style>
