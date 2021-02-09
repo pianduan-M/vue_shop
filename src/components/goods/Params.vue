@@ -60,6 +60,7 @@
                   v-for="(item, i) in scope.row.attr_vals"
                   :key="i"
                   closable
+                  @close="tagClosed(scope.row, i)"
                   >{{ item }}</el-tag
                 >
                 <el-input
@@ -318,7 +319,7 @@ export default {
       }
       // 把 attr_vals 转换成数组
       res.data.forEach((item) => {
-        item.attr_vals = item.attr_vals.split(' ')
+        item.attr_vals = item.attr_vals.split(',')
         item.inputVisible = false
         item.inputValue = ''
       })
@@ -463,6 +464,22 @@ export default {
     // 监听添加对话框的关闭事件
     addParDialogClose() {
       this.$refs.addFormRef.resetFields()
+    },
+    // 监听动态参数删除事件
+    async tagClosed(row, i) {
+      row.attr_vals.splice(i, 1)
+      const { data: res } = await this.$http.put(
+        `categories/${this.cateId}/attributes/${row.attr_id}`,
+        {
+          attr_name: row.attr_name,
+          attr_sel: 'many',
+          attr_vals: row.attr_vals.join(' ')
+        }
+      )
+      if (res.meta.status !== 200) {
+        return this.$message.error(res.meta.msg)
+      }
+      this.$message.success('删除成功')
     }
   },
   computed: {
