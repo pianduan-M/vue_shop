@@ -8,7 +8,8 @@ import './assets/css/global.css'
 
 // 引入字体图标
 import './assets/fonts/iconfont.css'
-
+// 导入树状表格
+import TreeTable from 'vue-table-with-tree-grid'
 // 引入axios
 import axios from 'axios'
 // 配置请求根路径
@@ -37,6 +38,8 @@ Vue.filter('formatTime', function(time) {
 Vue.prototype.$http = axios
 
 Vue.config.productionTip = false
+
+Vue.component('tree-table',TreeTable)
 
 let vm = new Vue({
   router,
