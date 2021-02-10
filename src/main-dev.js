@@ -16,15 +16,31 @@ import 'quill/dist/quill.core.css'
 import 'quill/dist/quill.snow.css'
 import 'quill/dist/quill.bubble.css'
 Vue.use(VueQuillEditor /* { default global options } */)
+// 页面加载进度条
+import NProgress from 'nprogress'
+import 'nprogress/nprogress.css'
+
 // 引入axios
 import axios from 'axios'
 // 配置请求根路径
 axios.defaults.baseURL = 'http://127.0.0.1:8888/api/private/v1/'
 // 配置请求拦截器 每次请求携带token值
 axios.interceptors.request.use((config) => {
+  // 进度条开始
+  NProgress.start()
   // 请求头添加token值
   config.headers.Authorization = window.sessionStorage.getItem('token')
   // 每次都必须把config返回出去
+  return config
+})
+
+// axios 请求成功
+axios.interceptors.response.use((config) => {
+  NProgress.done()
+  console.log(config.data.meta.status)
+  if (config.data.meta.status === 400) {
+    router.replace('/login')
+  }
   return config
 })
 // 格式化时间的过滤器
